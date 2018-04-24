@@ -34,6 +34,9 @@ public class Card {
             this.value = 11;
         }
     }
+    public int getValue(){
+        return this.value;
+    }
     public String toString(){
         return "The " + "Rank" + this.rank + " of " + "Suit" + this.suit;
     }
