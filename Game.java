@@ -1,5 +1,6 @@
-import javax.naming.InitialContext;
 import java.util.*;
+
+import com.codecool.klondike.Card;
 
 public class Game {
     private ArrayList<Player> players;
@@ -36,4 +37,25 @@ public class Game {
         return deck;
     }
 
+    private void newRound(){
+        this.cashPool = 0;
+        clearTable();
+        dealCards();
+    }
+
+    private void dealCards(ArrayList<Card> deck){
+        for (int i=1; i=players.length(); i++){
+            playerPiles.get(i).add(deck.getTopCard());
+            deck.remove(0);
+            if (i=players.length() && playerPiles.get(i).length()==1){
+            }
+            else {
+                playerPiles.get(i).get()
+            }
+        }
+    }
+
+    private void shuffleDeck(ArrayList<Card> deck){
+        Collections.shuffle(deck);
+    }
 }
