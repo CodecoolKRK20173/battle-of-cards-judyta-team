@@ -45,10 +45,10 @@ public class Game {
     private void dealCards(){
         
         for (int i=1; i=players.length(); i++){
-            players.get(i).hand.add(deck.getTopCard());
+            players.get(i).getHand().add(deck.getTopCard());
             deck.remove(0);
-            if (!players.length()==i && !players.get(i).hand.length()==1){
-                players.get(i).hand.get(hand.length()).flipCard();
+            if (!players.length()==i && !players.get(i).getHand().length()==1){
+                players.get(i).getHand().get(getHand().length()).flipCard();
             }
             else {
             }
@@ -63,7 +63,7 @@ public class Game {
         ArrayList<Integer> scoreTable;
         for (Player player : players){
             if (player.getBust()==false){
-                scoreTable.add(player.score);
+                scoreTable.add(player.getScore());
             }
         }
         Collections.sort(scoreTable);
@@ -75,11 +75,11 @@ public class Game {
         }
     }
 
-    private Pile getDeck(){
+    public Pile getDeck(){
         return this.deck;
     }
 
-    private void setDeck(Pile pile){
+    public void setDeck(Pile pile){
         this.deck = pile;
     }
 

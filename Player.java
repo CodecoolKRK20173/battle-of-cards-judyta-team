@@ -23,6 +23,10 @@ public abstract class Player {
         return this.coolcoin;
     }
 
+    public Pile getHand() {
+        return this.hand;
+    }
+
     public int getScore() {
         return this.score;
     }
