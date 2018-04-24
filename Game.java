@@ -1,3 +1,4 @@
+import java.security.Principal;
 import java.util.*;
 
 public class Game {
@@ -13,17 +14,17 @@ public class Game {
         dealCards(deck);
     }
 
-    private int getBet() {
-        System.out.println("Bet my friend! ");
-        Scanner scanner = new Scanner(System.in);
-        int bet = 0;
-        try {
-            bet = scanner.nextInt();
-        } catch (Exception e) {
-            System.out.println("This isn't a number!");
-        }
-        return bet;
-    }
+    // private int getBet() {
+    //     System.out.println("Bet my friend! ");
+    //     Scanner scanner = new Scanner(System.in);
+    //     int bet = 0;
+    //     try {
+    //         bet = scanner.nextInt();
+    //     } catch (Exception e) {
+    //         System.out.println("This isn't a number!");
+    //     }
+    //     return bet;
+    // }
 
     private ArrayList<Card> createDeck(){
         ArrayList<Card> deck = new ArrayList<>();
@@ -55,5 +56,21 @@ public class Game {
 
     private void shuffleDeck(ArrayList<Card> deck){
         Collections.shuffle(deck);
+    }
+
+    private ArrayList<Integer> checkHighestScore(){
+        ArrayList<Integer> scoreTable;
+        for (Player player : playerList){
+            if (player.bust==false){
+                scoreTable.add(player.score);
+            }
+        }
+        Collections.sort(scoreTable);
+        int highestScore = scoreTable.get(0);
+        for (Player player : playerList){
+            if (player.score==highestScore){
+                player.winner=true;
+            }
+        }
     }
 }
