@@ -43,7 +43,9 @@ public class Game {
     }
 
     private void dealCards(){
-        
+        //while (playerIterator.hasNext()) {
+        //player = playerIterator.next()
+        //}
         for (int i=1; i=players.length(); i++){
             players.get(i).getHand().add(deck.getTopCard());
             deck.remove(0);

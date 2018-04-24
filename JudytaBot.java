@@ -9,4 +9,9 @@ public class JudytaBot extends Player {
         //game over;
     }
 
+    @Override
+    public boolean isPassed(String inputScaner) {
+        return false;
+    }
+
 }

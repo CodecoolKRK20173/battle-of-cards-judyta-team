@@ -3,10 +3,19 @@ public class Human extends Player {
     public Human(String name) {
         super(name, 100);
     }
-
+    
     @Override
     public void pass() {
-        //next player;
+        //ustaw player'a na szaro      
+    }
+
+    @Override
+    public boolean isPassed(String inputScaner) {
+        if (inputScanner.equals("p")) {
+            return true;
+        } else if (inputScanner.equals("n")) {
+            return false;
+        }
     }
 
 }

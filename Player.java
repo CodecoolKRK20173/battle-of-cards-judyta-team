@@ -80,4 +80,6 @@ public abstract class Player {
 
     public abstract void pass();
 
+    public abstract boolean isPassed();
+
 }
