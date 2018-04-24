@@ -10,8 +10,8 @@ public class Game {
         players = new ArrayList<>(players);
         cashPool = 0;
         deck = createDeck();
-        shuffleDeck(deck);
-        dealCards(deck);
+        shuffleDeck();
+        dealCards();
     }
 
     // private int getBet() {
@@ -39,10 +39,11 @@ public class Game {
     private void newRound(){
         this.cashPool = 0;
         clearTable();
-        dealCards(deck);
+        dealCards();
     }
 
-    private void dealCards(ArrayList<Card> deck){
+    private void dealCards(){
+        
         for (int i=1; i=players.length(); i++){
             players.get(i).hand.add(deck.getTopCard());
             deck.remove(0);
@@ -54,8 +55,8 @@ public class Game {
         }
     }
 
-    private void shuffleDeck(ArrayList<Card> deck){
-        Collections.shuffle(deck);
+    private void shuffleDeck(){
+        Collections.shuffle(deck.getAllCards());
     }
 
     private ArrayList<Integer> checkHighestScore(){
