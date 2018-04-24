@@ -1,7 +1,5 @@
 import java.util.*;
 
-import com.codecool.klondike.Card;
-
 public class Game {
     private ArrayList<Player> players;
     private Pile deck;
@@ -11,8 +9,8 @@ public class Game {
         players = new ArrayList<>(players);
         cashPool = 0;
         deck = createDeck();
-        shuffleDeck();
-        dealCards();
+        shuffleDeck(deck);
+        dealCards(deck);
     }
 
     private int getBet() {
@@ -40,17 +38,17 @@ public class Game {
     private void newRound(){
         this.cashPool = 0;
         clearTable();
-        dealCards();
+        dealCards(deck);
     }
 
     private void dealCards(ArrayList<Card> deck){
         for (int i=1; i=players.length(); i++){
-            playerPiles.get(i).add(deck.getTopCard());
+            players.get(i).hand.add(deck.getTopCard());
             deck.remove(0);
-            if (i=players.length() && playerPiles.get(i).length()==1){
+            if (!players.length()==i && !players.get(i).hand.length()==1){
+                players.get(i).hand.get(hand.length()).flipCard();
             }
             else {
-                playerPiles.get(i).get()
             }
         }
     }
