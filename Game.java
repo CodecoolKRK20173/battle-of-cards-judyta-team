@@ -10,8 +10,8 @@ public class Game {
         players = new ArrayList<>(players);
         cashPool = 0;
         deck = createDeck();
-        shuffleDeck(deck);
-        dealCards(deck);
+        shuffleDeck();
+        dealCards();
     }
 
     // private int getBet() {
@@ -43,6 +43,7 @@ public class Game {
     }
 
     private void dealCards(){
+        
         for (int i=1; i=players.length(); i++){
             players.get(i).hand.add(deck.getTopCard());
             deck.remove(0);
@@ -55,7 +56,7 @@ public class Game {
     }
 
     private void shuffleDeck(){
-        Collections.shuffle(deck);
+        Collections.shuffle(deck.getAllCards());
     }
 
     private void checkHighestScore(){

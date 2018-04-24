@@ -22,4 +22,7 @@ public class Pile {
     public void removeCard(Card card) {
         cards.remove(card);
     }
+    public ArrayList<Cards> getAllCards(){
+        return cards;
+    }
 }
