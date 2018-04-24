@@ -39,10 +39,10 @@ public class Game {
     private void newRound(){
         this.cashPool = 0;
         clearTable();
-        dealCards(deck);
+        dealCards();
     }
 
-    private void dealCards(ArrayList<Card> deck){
+    private void dealCards(){
         for (int i=1; i=players.length(); i++){
             players.get(i).hand.add(deck.getTopCard());
             deck.remove(0);
@@ -54,22 +54,38 @@ public class Game {
         }
     }
 
-    private void shuffleDeck(ArrayList<Card> deck){
+    private void shuffleDeck(){
         Collections.shuffle(deck);
     }
 
-    private ArrayList<Integer> checkHighestScore(){
+    private void checkHighestScore(){
         ArrayList<Integer> scoreTable;
-        for (Player player : playerList){
-            if (player.bust==false){
+        for (Player player : players){
+            if (player.getBust()==false){
                 scoreTable.add(player.score);
             }
         }
         Collections.sort(scoreTable);
         int highestScore = scoreTable.get(0);
-        for (Player player : playerList){
-            if (player.score==highestScore){
-                player.winner=true;
+        for (Player player : players){
+            if (player.getScore()==highestScore){
+                player.setWinner(true);
+            }
+        }
+    }
+
+    private Pile getDeck(){
+        return this.deck;
+    }
+
+    private void setDeck(Pile pile){
+        this.deck = pile;
+    }
+
+    private void giveCoolcoinsTowWinner(){
+        for(Player player : players){
+            if(player.getWinner()==true){
+                player.setCoolcoin(player.getCoolcoin()+cashPool);
             }
         }
     }
