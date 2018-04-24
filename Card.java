@@ -3,12 +3,14 @@ public class Card {
     private int rank;
     private boolean isFaceDown;
     private int value;
+    private Pile pile;
 
-    public Card(int suit, int rank){
+    public Card(int suit, int rank, Pile pile){
         this.suit = suit;
         this.rank = rank;
         this.isFaceDown = true;
         setValue();
+        this.pile = pile;
     }
     public void flip(){
         if(isFaceDown == true){
@@ -34,5 +36,11 @@ public class Card {
     }
     public String toString(){
         return "The " + "Rank" + this.rank + " of " + "Suit" + this.suit;
+    }
+
+    public void changePileToDest(Pile destPile) {
+        destPile.addCard(this);
+        pile.removeCard(this);
+        pile = destPile;
     }
 }

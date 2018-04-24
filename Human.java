@@ -5,7 +5,7 @@ public class Human extends Player {
     }
 
     @Override
-    public void keepHand() {
+    public void pass() {
         //next player;
     }
 

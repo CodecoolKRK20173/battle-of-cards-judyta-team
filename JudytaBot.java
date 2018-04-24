@@ -5,7 +5,7 @@ public class JudytaBot extends Player {
     }
 
     @Override
-    public void keepHand() {
+    public void pass() {
         //game over;
     }
 
