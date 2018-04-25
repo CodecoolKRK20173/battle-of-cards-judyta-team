@@ -45,11 +45,11 @@ public class Display {
 
         StringBuilder table = new StringBuilder();
 
-        table.append(this.formatted(players.get(judytaIndex).getName()))    // Name
-             .append(this.formatted("Coins: " + players.get(judytaIndex).getCoolcoin()))    // Coins
-             .append(this.formatted(players.get(judytaIndex).getHand().toString())) // Cards
-             .append(this.formatted("Score: " + players.get(judytaIndex).getScore()))   // Score
-             .append(this.formatted("Total bet: " + totalBet) + "\n\n\n");   // Total bet
+        table.append(this.formatted(players.get(judytaIndex).getName(), tableWidth) + "\n")    // Name
+             .append(this.formatted("Coins: " + players.get(judytaIndex).getCoolcoin(), tableWidth) + "\n")    // Coins
+             .append(this.formatted(players.get(judytaIndex).getHand().toString(), tableWidth) + "\n") // Cards
+             .append(this.formatted("Score: " + players.get(judytaIndex).getScore(), tableWidth) + "\n")   // Score
+             .append(this.formatted("Total bet: " + totalBet, tableWidth) + "\n\n\n");   // Total bet
 
 
         table.append(this.playersData());
@@ -61,21 +61,21 @@ public class Display {
     private String playersData() {
 
         StringBuilder playersData = new StringBuilder();
-        ArrayList<Players> humanPlayers = getHumanPlayers();
+        ArrayList<Player> humanPlayers = getHumanPlayers();
 
         ArrayList<String> names = new ArrayList<>();
-        ArrayList<String> coins = new ArrayList<>();
+        ArrayList<Integer> coins = new ArrayList<>();
         ArrayList<Pile> cards = new ArrayList<>();
-        ArrayList<String> scores = new ArrayList<>();
+        ArrayList<Integer> scores = new ArrayList<>();
 
         PlayerIterator iterator = new PlayerIterator(humanPlayers);
 
         while (iterator.hasNext()) {
             Player player = iterator.next();
             names.add(player.getName());
-            coins.add((String) player.getCoolcoin());
+            coins.add(player.getCoolcoin());
             cards.add(player.getHand());
-            scores.add((String) player.getScore());
+            scores.add(player.getScore());
         }
 
         for (String n : names) {
@@ -84,32 +84,32 @@ public class Display {
 
         playersData.append("\n");
 
-        for (String c : coins) {
+        for (Integer c : coins) {
             playersData.append(formatted("Coins: " + c, MAX_PLAYER_WIDTH));
         }
 
         playersData.append("\n");
 
-        for (String c : cards) {
-            playersData.append(formatted(c, MAX_PLAYER_WIDTH));
+        for (Pile c : cards) {
+            playersData.append(formatted(c.toString(), MAX_PLAYER_WIDTH));
         }
 
         playersData.append("\n");
 
-        for (String s : scores) {
+        for (Integer s : scores) {
             playersData.append(formatted("Score: " + s, MAX_PLAYER_WIDTH));
         }
 
         return playersData.toString();
     }
 
-    private String formatted(String content) {
+    private String formatted(String content, int width) {
         
-        return String.format("%1$-" + (tableWidth / 2)
-                            + "s %2$-" + (tableWidth / 2)
+        return String.format("%1$-" + (width / 2)
+                            + "s %2$-" + (width / 2)
                             + "s"
                             , " "
-                            , content) + "\n";
+                            , content);
 
     }
 
