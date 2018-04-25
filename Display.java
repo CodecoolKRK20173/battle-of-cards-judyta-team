@@ -51,6 +51,7 @@ public class Display {
     }
 
     private String putJudytaName() {
+
         Integer tempWidth = tableWidth / 2;
         return String.format("%1$-" + tempWidth.toString()
                             + "s %2$-" + tempWidth.toString()
@@ -60,6 +61,7 @@ public class Display {
     }
 
     private String putJudytaCoins() {
+        
         Integer tempWidth = tableWidth / 2;
         return String.format("%1$-" + tempWidth.toString()
                             + "s %2$-" + tempWidth.toString()
