@@ -62,14 +62,10 @@ public class Display {
         StringBuilder playersData = new StringBuilder();
         ArrayList<Players> humanPlayers = getHumanPlayers();
 
-        for (int i = 0; i < humanPlayers.size() ; i++) {
+        PlayerIterator iterator = new PlayerIterator(humanPlayers);
 
-            PlayerIterator iterator = new PlayerIterator(humanPlayers);
-
-            while (iterator.hasNext()) {
-                Player player = iterator.next();
-            }
-
+        while (iterator.hasNext()) {
+            Player player = iterator.next();
         }
 
         return playersData.toString();
