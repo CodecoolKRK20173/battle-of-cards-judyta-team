@@ -1,4 +1,6 @@
 import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
 
 public class PlayerIterator implements Iterator<Player> {
     private int index;
@@ -8,7 +10,7 @@ public class PlayerIterator implements Iterator<Player> {
     public PlayerIterator(ArrayList<Player> players) {
         this.setIndex(0);
         this.setPlayers(players);
-        this.setMaxIndex(players.length());
+        this.setMaxIndex(players.size());
     }
 
     public void setIndex(int index) {
@@ -23,7 +25,7 @@ public class PlayerIterator implements Iterator<Player> {
         this.players = players;
     }
 
-    public int getPlayers() {
+    public List<Player> getPlayers() {
         return this.players;
     }
 
