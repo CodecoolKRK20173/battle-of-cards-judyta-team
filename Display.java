@@ -12,19 +12,6 @@ public class Display {
         this.tableWidth = this.getTableWidth();
     }
 
-    public void table() {
-
-        StringBuilder table = new StringBuilder();
-
-        table.append(this.putJudytaName())
-             .append(this.putJudytaCoins())
-             .append(this.putJudytaCards())
-             .append(this.putJudytaScore());
-
-        System.out.println(table.toString());
-
-    }
-
     private int getTableWidth() {
 
         int width = 0;
@@ -46,4 +33,18 @@ public class Display {
 
         return width;
     }
+
+    public void table() {
+
+        StringBuilder table = new StringBuilder();
+
+        table.append(this.putJudytaName())
+             .append(this.putJudytaCoins())
+             .append(this.putJudytaCards())
+             .append(this.putJudytaScore());
+
+        System.out.println(table.toString());
+
+    }
+
 }
