@@ -12,7 +12,6 @@ public class Game {
         deck = createDeck();
         shuffleDeck();
         dealCards();
-        lanuch();
     }
 
     public void lanuch() {
