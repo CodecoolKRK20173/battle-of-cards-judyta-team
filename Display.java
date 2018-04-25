@@ -4,17 +4,17 @@ public class Display {
 
     private final int MAX_DEFAULT_WIDTH = 10;
     
+    private int tableWidth;
     private ArrayList<Player> players;
 
     public Display(ArrayList<Player> players) {
         this.players = players;
+        this.tableWidth = this.getTableWidth();
     }
 
     public void table() {
 
         StringBuilder table = new StringBuilder();
-
-        int tableWidth = this.getTableWidth();
 
         table.append(this.putJudytaName())
              .append(this.putJudytaCoins())
