@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 public class Display {
 
-    private final int MAX_DEFAULT_WIDTH = 10;
     private final int MAX_PLAYER_WIDTH = 18;
     
     private int judytaIndex;
@@ -21,24 +20,7 @@ public class Display {
 
     private int getTableWidth() {
 
-        int width = 0;
-
-        PlayerIterator iterator = new PlayerIterator(players);
-        
-        while (iterator.hasNext()) {
-            
-            Player p = iterator.next();
-            int playerNameLength = p.getName().length();
-
-            if (playerNameLength <= MAX_DEFAULT_WIDTH) {
-                width += MAX_DEFAULT_WIDTH;
-            }
-            else {
-                width += playerNameLength;
-            }
-        }
-
-        return width;
+        return (players.size() - 1) * MAX_PLAYER_WIDTH;
     }
 
     public void table(int totalBet) {
