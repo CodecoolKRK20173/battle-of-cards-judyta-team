@@ -38,6 +38,7 @@ public class Display {
              .append(this.putJudytaCards())
              .append(this.putJudytaScore());
 
+        System.out.println(table.toString());
 
     }
 }
