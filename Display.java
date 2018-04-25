@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Display {
 
@@ -25,15 +26,13 @@ public class Display {
 
     public void table(int totalBet) {
 
+        Player judyta = players.get(judytaIndex);
         StringBuilder table = new StringBuilder();
 
-        table.append(this.formatted(players.get(judytaIndex).getName(), tableWidth) + "\n")    // Name
-             .append(this.formatted("Coins: " + players.get(judytaIndex).getCoolcoin(), tableWidth) + "\n");    // Coins
-             
-
-
-
-        table.append(this.formatted("Score: " + players.get(judytaIndex).getScore(), tableWidth) + "\n")   // Score
+        table.append(this.formatted(judyta.getName(), tableWidth) + "\n")    // Name
+             .append(this.formatted("Coins: " + judyta.getCoolcoin(), tableWidth) + "\n")
+             .append(this.formattedCards(tableWidth) + "\n")    // Coins
+             .append(this.formatted("Score: " + judyta.getScore(), tableWidth) + "\n")   // Score
              .append(this.formatted("Total bet: " + totalBet, tableWidth) + "\n\n\n");   // Total bet
 
 
@@ -96,6 +95,25 @@ public class Display {
                             , " "
                             , content);
 
+    }
+
+    private String formattedCards(int width) {
+
+        Player judyta = players.get(judytaIndex);
+        List<Card> cards = judyta.getHand().getAllCards();
+
+        StringBuilder cardsFormat = new StringBuilder();
+
+        cardsFormat.append(String.format("%1$-" + (width / 2) + "s", " ")).append(" ");
+
+        for (Card c : cards) {
+            cardsFormat.append(String.format("%1$c", c.getCodePointValue()));
+            cardsFormat.append(" ");
+        }
+
+        cardsFormat.append(String.format("%1$-" + (MAX_PLAYER_WIDTH - (cards.size() * 2)) + "s", " "));
+
+        return cardsFormat.toString();
     }
 
     private ArrayList<Player> getHumanPlayers() {
