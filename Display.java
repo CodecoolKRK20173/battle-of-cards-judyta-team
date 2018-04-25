@@ -37,7 +37,7 @@ public class Display {
         return width;
     }
 
-    public void table() {
+    public void table(int totalBet) {
 
         StringBuilder table = new StringBuilder();
 
@@ -45,7 +45,7 @@ public class Display {
              .append(this.putJudytaCoins() + "\n")
              .append(this.putJudytaCards() + "\n")
              .append(this.putJudytaScore() + "\n\n")
-             .append(this.putTotalBet() + "\n\n");
+             .append(this.putTotalBet(totalBet) + "\n\n\n\n");
 
         System.out.println(table.toString());
 
@@ -89,6 +89,16 @@ public class Display {
                             + "s"
                             , " "
                             , "Score: " + players.get(JUDYTA_INDEX).getScore());
+    }
+
+    private String putTotalBet(int totalBet) {
+
+        Integer tempWidth = tableWidth / 2;
+        return String.format("%1$-" + tempWidth.toString()
+                            + "s %2$-" + tempWidth.toString()
+                            + "s"
+                            , " "
+                            , "Total bet: " + totalBet);
     }
 
 }
