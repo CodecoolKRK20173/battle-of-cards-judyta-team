@@ -25,29 +25,8 @@ public class PlayerIterator implements Iterator<Player> {
         this.players = players;
     }
 
-    // public List<Player> getPlayers() {
-    //     return this.players;
-    // }
-
-    // public void setMaxIndex(int maxIndex) {
-    //     this.maxIndex = maxIndex;
-    // }
-
-    // public int getMaxIndex() {
-    //     return this.maxIndex;
-    // }
-
     public boolean hasNext() {
         return index < players.size();
-        // int nextIndex = this.getIndex();
-        // int maxIndex = getMaxIndex();
-
-        // if (nextIndex == maxIndex) {
-        //     //setIndex(0);
-        //     return false;
-        // } else {
-        //     return true;
-        // }
     }
 
     public Player next() {
