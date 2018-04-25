@@ -143,11 +143,11 @@ public class Game {
         cashPool = cash;
     }
     private void clearTable(){
-
-        System.out.println(deck.getAllCards().size());
-        for(Player player : players){
+        PlayerIterator playerIterator = new PlayerIterator(players);
+        while(playerIterator.hasNext()){
+            Player player = playerIterator.next();
             clearPlayerPile(player);
-        }    
+        }     
     }
     public void clearPlayerPile(Player player){
 
