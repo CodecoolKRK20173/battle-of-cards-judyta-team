@@ -47,4 +47,8 @@ public class Display {
 
     }
 
+    private String putJudytaName() {
+        return "";
+    }
+
 }
