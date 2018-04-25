@@ -5,23 +5,9 @@ import java.util.ArrayList;
 public class PlayerIterator implements Iterator<Player> {
     private int index;
     private List<Player> players;
-   // private int maxIndex;
 
     public PlayerIterator(ArrayList<Player> players) {
-        this.setIndex(0);
-        this.setPlayers(players);
-        //this.setMaxIndex(players.size());
-    }
-
-    private void setIndex(int index) {
-        this.index = index;
-    }
-
-    private int getIndex() {
-        return this.index;
-    }
-
-    private void setPlayers(ArrayList<Player> players) {
+        this.index = 0;
         this.players = players;
     }
 
@@ -30,10 +16,10 @@ public class PlayerIterator implements Iterator<Player> {
     }
 
     public Player next() {
-        int nextIndex = this.getIndex();
+        int nextIndex = this.index;
         Player player = this.players.get(nextIndex);
         nextIndex ++;
-        this.setIndex(nextIndex);
+        this.index = nextIndex;
         return player;
     }
 }

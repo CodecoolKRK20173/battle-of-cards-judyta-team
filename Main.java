@@ -35,7 +35,9 @@ public class Main {
                 handleAddPlayer(players);
                 break;
             case 2:
-                if (players.size()>0) {
+                Player judyta = new JudytaBot(200);
+                players.add(judyta);
+                if (players.size()>1) {
                     Game game = new Game(players);
                 } else {
                     System.out.println("There is no player. Please enter: Add new Player");
@@ -56,4 +58,18 @@ public class Main {
 
 
 
+    // public static void main(String[] args) {
+    //     ArrayList<Player> players = new ArrayList<>();
+
+    //     Player p1 = new Human("Michal");
+    //     Player p2 = new Human("Wojtek");
+
+    //     Player judyta = new JudytaBot(200);
+
+    //     players.add(p1);
+    //     players.add(p2);
+    //     players.add(judyta);
+
+    //     Game game = new Game(players);
+    // }
 }

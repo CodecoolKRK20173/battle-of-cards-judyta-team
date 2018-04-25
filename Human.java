@@ -10,12 +10,11 @@ public class Human extends Player {
     }
 
     @Override
-    public boolean isPassed(String inputScanner) {
-        if (inputScanner.equals("p")) {
-            return true;
-        } else if (inputScanner.equals("n")) {
-            return false;
+    public boolean isPassed() { 
+        int decision = 0;
+        while (decision != 1 && decision != 2) {
+            decision = Input.getInt("What do you want to do?\n 1. -> pass\n 2. -> hit card");
         }
-        else return true;
+        return decision == 1;
     }
 }

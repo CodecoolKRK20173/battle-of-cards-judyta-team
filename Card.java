@@ -40,7 +40,8 @@ public class Card {
         return this.value;
     }
     public String toString(){
-        return "The " + "Rank" + this.rank + " of " + "Suit" + this.suit;
+        //String cartToPrint = "";
+        return "" + this.rank + this.getIcon() + " ";
     }
 
     public void changePileToDest(Pile destPile) {
@@ -56,7 +57,7 @@ public class Card {
         CLUB
     }
 
-    public void getIcon() {
+    public String getIcon() {
         Map<Suits, String> suitIcon = new HashMap<Suits, String>();
  
         suitIcon.put(Suits.DIAMOND, "\u2666");
@@ -68,6 +69,7 @@ public class Card {
         //kier "\u2665"
         //pik "\u2660"
         //trefl "\u2663"
+        return suitIcon.get(this.suit);
     }
 
 }

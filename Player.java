@@ -2,7 +2,6 @@ public abstract class Player {
     private String name;
     private int coolcoin;
     private Pile hand;
-    private Game game;
     private int score;
     private boolean bust = false;
     private boolean winner = false;
@@ -12,7 +11,6 @@ public abstract class Player {
         this.name = name;
         this.coolcoin = cash;
         this.hand = new Pile();
-        //game = new Game();
     }
 
     public String getName() {
@@ -45,10 +43,6 @@ public abstract class Player {
 
     public void setCoolcoin(int cash) {
         this.coolcoin = cash;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
     } 
 
     public void setScore(int score) {
@@ -76,6 +70,6 @@ public abstract class Player {
 
     public abstract void pass();
 
-    public abstract boolean isPassed(String inputScanner);
+    public abstract boolean isPassed();
 
 }
