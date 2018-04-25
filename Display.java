@@ -41,11 +41,11 @@ public class Display {
 
         StringBuilder table = new StringBuilder();
 
-        table.append(this.putJudytaName() + "\n")
-             .append(this.putJudytaCoins() + "\n")
-             .append(this.putJudytaCards() + "\n")
-             .append(this.putJudytaScore() + "\n\n")
-             .append(this.putTotalBet(totalBet) + "\n\n\n\n");
+        table.append(this.putFormatted(players.get(JUDYTA_INDEX).getName()))    // Name
+             .append(this.putFormatted("Coins: " + players.get(JUDYTA_INDEX).getCoolcoin()))    // Coins
+             .append(this.putFormatted(players.get(JUDYTA_INDEX).getHand().toString())) // Cards
+             .append(this.putFormatted("Score: " + players.get(JUDYTA_INDEX).getScore()))   // Score
+             .append(this.putFormatted("Total bet: " + totalBet) + "\n\n\n");   // Total bet
 
         System.out.println(table.toString());
 
