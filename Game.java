@@ -119,4 +119,18 @@ public class Game {
     public void setCashPool(int cash) {
         cashPool = cash;
     }
+    public void clearTable(){
+        System.out.println(deck.getAllCards().size());
+        for(Player player : players){
+           
+            Card temp = player.getHand().getTopCard();
+            deck.addCard(temp);
+            player.getHand().removeCard(temp);
+            System.out.println(deck.getAllCards().size());
+            
+        }
+        
+    
+            
+    }
 }

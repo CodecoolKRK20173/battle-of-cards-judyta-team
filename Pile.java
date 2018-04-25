@@ -38,4 +38,7 @@ public class Pile {
 
         return cardsInPile.toString();
     }
+    public int getSize(){
+        return cards.size();
+    }
 }
