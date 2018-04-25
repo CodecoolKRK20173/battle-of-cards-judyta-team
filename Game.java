@@ -30,9 +30,9 @@ public class Game {
             }
             else{
                 int cash = getInput("Give bet! ");
-                // player.betCoins(cash);
+                player.betCoins(cash);
                 cashPool += cash;
-                player.setCoolcoin(player.getCoolcoin()-cash);
+                //player.setCoolcoin(player.getCoolcoin()-cash);
             }
             System.out.println("Cash Pool: " + cashPool);
         });

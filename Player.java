@@ -71,6 +71,7 @@ public abstract class Player {
         //Pile deck = game.getDeck();
         Card cardToHit = deck.getTopCard();
         cardToHit.changePileToDest(deck);
+        //cardToHit.changePileToDest(player.getHand());
     }
 
     public abstract void pass();

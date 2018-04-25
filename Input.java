@@ -1,26 +1,17 @@
 import java.util.*;
-
-
 public class Input {
-    private String input;
 
-    public Input() {
+    public static String getString(String text) {
+        System.out.println(text);
         Scanner input = new Scanner(System.in);
-    }
+        return input.nextLine();
+    }  
 
-    public String getInput() {
-        return this.input;
+    public static int getInt(String text) {
+        System.out.println(text);
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
     }
-
-    public void setInput(String input) {
-        this.input = input;
-    }
-
-    public int stringToInt(String input) {
-        int inputInt = Integer.parseInt(input);
-        return inputInt;
-    }
-    
 }
 
 
