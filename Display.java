@@ -4,15 +4,18 @@ import java.util.HashMap;
 public class Display {
 
     private final int MAX_DEFAULT_WIDTH = 10;
-    private final int JUDYTA_INDEX = 0;
     
+    private int judytaIndex;
     private int tableWidth;
     private ArrayList<Player> players;
     // private HashMap<ArrayList<Player>, Integer> playersPrintWidth;
 
     public Display(ArrayList<Player> players) {
+
         this.players = players;
         this.tableWidth = this.getTableWidth();
+        this.judytaIndex = players.get(players.size() - 1);
+
     }
 
     private int getTableWidth() {
@@ -41,10 +44,10 @@ public class Display {
 
         StringBuilder table = new StringBuilder();
 
-        table.append(this.formatted(players.get(JUDYTA_INDEX).getName()))    // Name
-             .append(this.formatted("Coins: " + players.get(JUDYTA_INDEX).getCoolcoin()))    // Coins
-             .append(this.formatted(players.get(JUDYTA_INDEX).getHand().toString())) // Cards
-             .append(this.formatted("Score: " + players.get(JUDYTA_INDEX).getScore()))   // Score
+        table.append(this.formatted(players.get(judytaIndex).getName()))    // Name
+             .append(this.formatted("Coins: " + players.get(judytaIndex).getCoolcoin()))    // Coins
+             .append(this.formatted(players.get(judytaIndex).getHand().toString())) // Cards
+             .append(this.formatted("Score: " + players.get(judytaIndex).getScore()))   // Score
              .append(this.formatted("Total bet: " + totalBet) + "\n\n\n");   // Total bet
 
 
