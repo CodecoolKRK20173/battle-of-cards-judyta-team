@@ -60,6 +60,15 @@ public class Display {
     private String playersData() {
 
         StringBuilder playersData = new StringBuilder();
+        
+        Player judyta = players.get(judytaIndex);
+        ArrayList<Player> humanPlayers = new ArrayList<>(players);
+        humanPlayers.remove(judyta);
+
+        for (int i = 0; i < humanPlayers.size() ; i++) {
+
+            PlayerIterator iterator = new PlayerIterator(humanPlayers);
+        }
 
         return playersData.toString();
     }
