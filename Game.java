@@ -54,7 +54,7 @@ public class Game {
         //}
         for (int i=1; i<players.size(); i++){
             players.get(i).getHand().addCard(deck.getTopCard());
-            deck.removeCard(deck.getAllCards().get(0));;
+            deck.removeCard(deck.getTopCard());
             if (players.size()!=i && players.get(i).getHand().getAllCards().size()!=1){
                 players.get(i).getHand().getTopCard().flip();
             }
