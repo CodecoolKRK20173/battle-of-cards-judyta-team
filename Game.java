@@ -52,15 +52,29 @@ public class Game {
         //while (playerIterator.hasNext()) {
         //player = playerIterator.next()
         //}
-        for (int i=1; i<players.size(); i++){
-            players.get(i).getHand().addCard(deck.getTopCard());
-            deck.removeCard(deck.getAllCards().get(0));;
-            if (players.size()!=i && players.get(i).getHand().getAllCards().size()!=1){
-                players.get(i).getHand().getTopCard().flip();
+        // for (int i=1; i<players.size(); i++){
+        //     players.get(i).getHand().addCard(deck.getTopCard());
+        //     deck.removeCard(deck.getTopCard());
+        //     if (players.size()!=i && players.get(i).getHand().getAllCards().size()!=1){
+        //         players.get(i).getHand().getTopCard().flip();
+        //     }
+        //     else {
+        //     }
+        // }
+        Iterator<Player> playerIterator = players.iterator();
+        playerIterator.forEachRemaining(player -> {
+            if(player.equals(players.get(players.size()-1))){
+                player.getHand().addCard(deck.getTopCard());
+                player.getHand().getTopCard().flip();
+                player.getHand().addCard(deck.getTopCard());
             }
             else {
+                player.getHand().addCard(deck.getTopCard());
+                player.getHand().getTopCard().flip();
+                player.getHand().addCard(deck.getTopCard());
+                player.getHand().getTopCard().flip();
             }
-        }
+        });
     }
 
     private void shuffleDeck(){
