@@ -14,7 +14,7 @@ public class Display {
 
         this.players = players;
         this.tableWidth = this.getTableWidth();
-        this.judytaIndex = players.get(players.size() - 1);
+        this.judytaIndex = players.indexOf(players.get(players.size() - 1));
 
     }
 
