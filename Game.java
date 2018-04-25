@@ -12,7 +12,6 @@ public class Game {
         deck = createDeck();
         shuffleDeck();
         dealCards();
-        lanuch();
     }
 
     public void lanuch() {
@@ -34,9 +33,10 @@ public class Game {
 
     private Pile createDeck(){
         Pile deck = new Pile();
-        for (int i=0; i<4; i++){
+        for (int i=1; i<5; i++){
             for (int j=2; j<15; j++){
                 deck.addCard(new Card(i, j, deck));
+                // System.out.println("rank = " + i + "suit = " + j);
             }
         }
         return deck;
@@ -49,31 +49,24 @@ public class Game {
     }
 
     private void dealCards(){
-        //while (playerIterator.hasNext()) {
-        //player = playerIterator.next()
-        //}
-        // for (int i=1; i<players.size(); i++){
-        //     players.get(i).getHand().addCard(deck.getTopCard());
-        //     deck.removeCard(deck.getTopCard());
-        //     if (players.size()!=i && players.get(i).getHand().getAllCards().size()!=1){
-        //         players.get(i).getHand().getTopCard().flip();
-        //     }
-        //     else {
-        //     }
-        // }
         Iterator<Player> playerIterator = players.iterator();
         playerIterator.forEachRemaining(player -> {
             if(player.equals(players.get(players.size()-1))){
                 player.getHand().addCard(deck.getTopCard());
                 player.getHand().getTopCard().flip();
+                deck.removeCard(deck.getTopCard());
                 player.getHand().addCard(deck.getTopCard());
+                deck.removeCard(deck.getTopCard());
             }
             else {
                 player.getHand().addCard(deck.getTopCard());
                 player.getHand().getTopCard().flip();
+                deck.removeCard(deck.getTopCard());
                 player.getHand().addCard(deck.getTopCard());
                 player.getHand().getTopCard().flip();
+                deck.removeCard(deck.getTopCard());
             }
+            // System.out.println(deck.getAllCards().size());
         });
     }
 
