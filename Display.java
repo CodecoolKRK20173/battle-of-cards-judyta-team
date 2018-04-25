@@ -28,9 +28,12 @@ public class Display {
         StringBuilder table = new StringBuilder();
 
         table.append(this.formatted(players.get(judytaIndex).getName(), tableWidth) + "\n")    // Name
-             .append(this.formatted("Coins: " + players.get(judytaIndex).getCoolcoin(), tableWidth) + "\n")    // Coins
-             .append(this.formatted(players.get(judytaIndex).getHand().toString(), tableWidth) + "\n") // Cards
-             .append(this.formatted("Score: " + players.get(judytaIndex).getScore(), tableWidth) + "\n")   // Score
+             .append(this.formatted("Coins: " + players.get(judytaIndex).getCoolcoin(), tableWidth) + "\n");    // Coins
+             
+
+
+
+        table.append(this.formatted("Score: " + players.get(judytaIndex).getScore(), tableWidth) + "\n")   // Score
              .append(this.formatted("Total bet: " + totalBet, tableWidth) + "\n\n\n");   // Total bet
 
 
