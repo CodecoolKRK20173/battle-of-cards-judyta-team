@@ -68,6 +68,11 @@ public class Display {
         for (int i = 0; i < humanPlayers.size() ; i++) {
 
             PlayerIterator iterator = new PlayerIterator(humanPlayers);
+
+            while (iterator.hasNext()) {
+                Player player = iterator.next();
+            }
+
         }
 
         return playersData.toString();
