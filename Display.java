@@ -41,7 +41,7 @@ public class Display {
 
         StringBuilder table = new StringBuilder();
 
-        table.append(this.putJudytaName())
+        table.append(this.putJudytaName() + "\n")
              .append(this.putJudytaCoins())
              .append(this.putJudytaCards())
              .append(this.putJudytaScore());
@@ -57,6 +57,15 @@ public class Display {
                             + "s"
                             , " "
                             , players.get(JUDYTA_INDEX).getName());
+    }
+
+    private String putJudytaCoins() {
+        Integer tempWidth = tableWidth / 2;
+        return String.format("%1$-" + tempWidth.toString()
+                            + "s %2$-" + tempWidth.toString()
+                            + "s"
+                            , " "
+                            , "Score: " + players.get(JUDYTA_INDEX).getScore());
     }
 
 }
