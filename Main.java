@@ -7,8 +7,11 @@ public class Main {
         Player p1 = new Human("Michal");
         Player p2 = new Human("Wojtek");
 
+        Player judyta = new JudytaBot(200);
+
         players.add(p1);
         players.add(p2);
+        players.add(judyta);
 
         Game game = new Game(players);
         game.lanuch();
