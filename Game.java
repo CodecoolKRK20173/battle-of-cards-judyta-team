@@ -16,7 +16,7 @@ public class Game {
 
     public void lanuch() {
         Display display = new Display(players);
-        display.table();
+        display.table(cashPool);
     }
 
     // private int getBet() {
