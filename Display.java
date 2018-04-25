@@ -8,7 +8,7 @@ public class Display {
         this.players = players;
     }
 
-    public void table() {
+    public void tablee() {
         PlayerIterator iterator = new PlayerIterator(players);
 
         StringBuilder playerItems = new StringBuilder();
@@ -25,5 +25,9 @@ public class Display {
         }
 
         System.out.println(playerItems);
+    }
+
+    public void table() {
+        
     }
 }
