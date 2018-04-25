@@ -4,6 +4,7 @@ import java.util.HashMap;
 public class Display {
 
     private final int MAX_DEFAULT_WIDTH = 10;
+    private final int JUDYTA_INDEX = 0;
     
     private int tableWidth;
     private ArrayList<Player> players;
@@ -50,7 +51,8 @@ public class Display {
     }
 
     private String putJudytaName() {
-        return String.format("");
+        Integer tempWidth = tableWidth / 2;
+        return String.format("%1$-" + tempWidth.toString() + "s %2$-" + tempWidth.toString() + "s", " ", players.get(JUDYTA_INDEX).getName());
     }
 
 }
