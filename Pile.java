@@ -25,4 +25,19 @@ public class Pile {
     public ArrayList<Cards> getAllCards(){
         return cards;
     }
+
+    public String toString() {
+        
+        StringBuilder cardsInPile = new StringBuilder();
+
+        if (cards.isEmpty()) {
+            return "empty";
+        }
+
+        for (Card c : cards) {
+            cardsInPile.append(c + " ");
+        }
+
+        return cardsInPile.toString();
+    }
 }
