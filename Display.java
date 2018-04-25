@@ -58,7 +58,7 @@ public class Display {
                             + "s %2$-" + tempWidth.toString()
                             + "s"
                             , " "
-                            , content);
+                            , content) + "\n";
 
     }
 
