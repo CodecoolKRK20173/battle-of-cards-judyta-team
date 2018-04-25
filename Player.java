@@ -9,10 +9,10 @@ public abstract class Player {
 
     
     public Player(String name, int cash) {
-        setName(name);
-        setCoolcoin(cash);
+        this.name = name;
+        this.coolcoin = cash;
         this.hand = new Pile();
-        game = null;
+        //game = new Game();
     }
 
     public String getName() {
@@ -64,16 +64,11 @@ public abstract class Player {
     } 
 
     public void betCoins(int cash) {
-        //System.out.println("Bet game!")
-        //Scanner input = new Scanner(System.in);
-        // int cash = input.nextInt();
-        int coolcoin = getCoolcoin();
-        setCoolcoin(coolcoin-cash);
-        game.setCashPool(game.getCashPool() + cash);
+        setCoolcoin(this.coolcoin-cash);
     }
 
-    public void takeCard() {
-        Pile deck = game.getDeck();
+    public void takeCard(Pile deck) {
+        //Pile deck = game.getDeck();
         Card cardToHit = deck.getTopCard();
         cardToHit.changePileToDest(deck);
     }
