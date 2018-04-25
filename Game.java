@@ -7,11 +7,17 @@ public class Game {
     private int cashPool;
 
     public Game(ArrayList<Player> players) {
-        players = new ArrayList<>(players);
+        this.players = new ArrayList<>(players);
         cashPool = 0;
         deck = createDeck();
         shuffleDeck();
         dealCards();
+        lanuch();
+    }
+
+    public void lanuch() {
+        Display display = new Display(players);
+        display.table();
     }
 
     // private int getBet() {
@@ -46,7 +52,7 @@ public class Game {
         //while (playerIterator.hasNext()) {
         //player = playerIterator.next()
         //}
-        for (int i=1; i<=players.size(); i++){
+        for (int i=1; i<players.size(); i++){
             players.get(i).getHand().addCard(deck.getTopCard());
             deck.removeCard(deck.getAllCards().get(0));;
             if (players.size()!=i && players.get(i).getHand().getAllCards().size()!=1){
