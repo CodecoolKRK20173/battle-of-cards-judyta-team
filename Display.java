@@ -44,7 +44,8 @@ public class Display {
         table.append(this.putJudytaName() + "\n")
              .append(this.putJudytaCoins() + "\n")
              .append(this.putJudytaCards() + "\n")
-             .append(this.putJudytaScore());
+             .append(this.putJudytaScore() + "\n\n")
+             .append(this.putTotalBet() + "\n\n");
 
         System.out.println(table.toString());
 
