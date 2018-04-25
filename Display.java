@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Display {
 
@@ -6,6 +7,7 @@ public class Display {
     
     private int tableWidth;
     private ArrayList<Player> players;
+    // private HashMap<ArrayList<Player>, Integer> playersPrintWidth;
 
     public Display(ArrayList<Player> players) {
         this.players = players;
@@ -48,7 +50,7 @@ public class Display {
     }
 
     private String putJudytaName() {
-        return "";
+        return String.format("");
     }
 
 }
