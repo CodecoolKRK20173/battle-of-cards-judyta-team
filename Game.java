@@ -14,6 +14,7 @@ public class Game {
         dealCards();
         launch();
         placingBets();
+        newRound();
     }
 
     public void launch() {
@@ -141,18 +142,21 @@ public class Game {
     public void setCashPool(int cash) {
         cashPool = cash;
     }
-    public void clearTable(){
+    private void clearTable(){
+
         System.out.println(deck.getAllCards().size());
         for(Player player : players){
-           
-            Card temp = player.getHand().getTopCard();
-            deck.addCard(temp);
-            player.getHand().removeCard(temp);
-            System.out.println(deck.getAllCards().size());
-            
-        }
-        
-    
-            
+            clearPlayerPile(player);
+        }    
+    }
+    public void clearPlayerPile(Player player){
+
+        Card topFirstCard = player.getHand().getTopCard();
+        deck.addCard(topFirstCard);
+        player.getHand().removeCard(topFirstCard);
+        Card topSecondCard = player.getHand().getTopCard();
+        deck.addCard(topSecondCard);
+        player.getHand().removeCard(topSecondCard);
+        System.out.println(deck.getAllCards().size());
     }
 }
