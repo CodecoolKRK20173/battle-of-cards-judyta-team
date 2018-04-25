@@ -14,7 +14,5 @@ public class Main {
         players.add(judyta);
 
         Game game = new Game(players);
-        // game.lanuch();
-
     }
 }
