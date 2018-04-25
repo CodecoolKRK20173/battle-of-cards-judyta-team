@@ -80,9 +80,8 @@ public class Display {
 
     private String formatted(String content) {
         
-        Integer tempWidth = tableWidth / 2;
-        return String.format("%1$-" + tempWidth.toString()
-                            + "s %2$-" + tempWidth.toString()
+        return String.format("%1$-" + (tableWidth / 2)
+                            + "s %2$-" + (tableWidth / 2)
                             + "s"
                             , " "
                             , content) + "\n";
