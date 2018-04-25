@@ -40,6 +40,9 @@ public class Card {
     public String toString(){
         return "The " + "Rank" + this.rank + " of " + "Suit" + this.suit;
     }
+    public int getCodePointValue() {
+        return 127137;
+    }
 
     public void changePileToDest(Pile destPile) {
         destPile.addCard(this);
