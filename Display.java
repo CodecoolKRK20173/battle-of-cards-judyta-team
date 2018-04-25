@@ -60,10 +60,7 @@ public class Display {
     private String playersData() {
 
         StringBuilder playersData = new StringBuilder();
-        
-        Player judyta = players.get(judytaIndex);
-        ArrayList<Player> humanPlayers = new ArrayList<>(players);
-        humanPlayers.remove(judyta);
+        ArrayList<Players> humanPlayers = getHumanPlayers();
 
         for (int i = 0; i < humanPlayers.size() ; i++) {
 
@@ -86,6 +83,15 @@ public class Display {
                             , " "
                             , content) + "\n";
 
+    }
+
+    private ArrayList<Player> getHumanPlayers() {
+
+        Player judyta = players.get(judytaIndex);
+        ArrayList<Player> humanPlayers = new ArrayList<>(players);
+        humanPlayers.remove(judyta);
+
+        return humanPlayers;
     }
 
 }
