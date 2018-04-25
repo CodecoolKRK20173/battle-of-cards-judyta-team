@@ -4,9 +4,9 @@ import java.util.*;
 public class Game {
     private ArrayList<Player> players;
     private Pile deck;
-    private Int cashPool;
+    private int cashPool;
 
-    public Game(Player... players) {
+    public Game(ArrayList<Player> players) {
         players = new ArrayList<>(players);
         cashPool = 0;
         deck = createDeck();
@@ -26,11 +26,11 @@ public class Game {
     //     return bet;
     // }
 
-    private ArrayList<Card> createDeck(){
-        ArrayList<Card> deck = new ArrayList<>();
+    private Pile createDeck(){
+        Pile deck = new Pile();
         for (int i=0; i<4; i++){
             for (int j=2; j<15; j++){
-                deck.add(new Card(i, j));
+                deck.addCard(new Card(i, j, deck));
             }
         }
         return deck;
@@ -38,7 +38,7 @@ public class Game {
 
     private void newRound(){
         this.cashPool = 0;
-        clearTable();
+        // clearTable();
         dealCards();
     }
 
@@ -46,11 +46,11 @@ public class Game {
         //while (playerIterator.hasNext()) {
         //player = playerIterator.next()
         //}
-        for (int i=1; i=players.length(); i++){
-            players.get(i).getHand().add(deck.getTopCard());
-            deck.remove(0);
-            if (!players.length()==i && !players.get(i).getHand().length()==1){
-                players.get(i).getHand().get(getHand().length()).flipCard();
+        for (int i=1; i<=players.size(); i++){
+            players.get(i).getHand().addCard(deck.getTopCard());
+            deck.removeCard(deck.getAllCards().get(0));;
+            if (players.size()!=i && players.get(i).getHand().getAllCards().size()!=1){
+                players.get(i).getHand().getTopCard().flip();
             }
             else {
             }
@@ -62,7 +62,7 @@ public class Game {
     }
 
     private void checkHighestScore(){
-        ArrayList<Integer> scoreTable;
+        ArrayList<Integer> scoreTable = new ArrayList<>();
         for (Player player : players){
             if (player.getBust()==false){
                 scoreTable.add(player.getScore());
@@ -91,5 +91,13 @@ public class Game {
                 player.setCoolcoin(player.getCoolcoin()+cashPool);
             }
         }
+    }
+
+    public int getCashPool() {
+        return cashPool;
+    }
+
+    public void setCashPool(int cash) {
+        cashPool = cash;
     }
 }

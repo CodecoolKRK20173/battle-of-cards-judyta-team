@@ -4,10 +4,8 @@ import java.util.ArrayList;
 public class Pile {
 
     private List<Card> cards;
-    private String name;
 
-    public Pile(String name) {
-        this.name = name;
+    public Pile() {
         cards = new ArrayList<>();
     }
 
@@ -22,7 +20,7 @@ public class Pile {
     public void removeCard(Card card) {
         cards.remove(card);
     }
-    public ArrayList<Cards> getAllCards(){
+    public List<Card> getAllCards(){
         return cards;
     }
 }

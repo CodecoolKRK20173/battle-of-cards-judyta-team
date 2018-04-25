@@ -10,12 +10,12 @@ public class Human extends Player {
     }
 
     @Override
-    public boolean isPassed(String inputScaner) {
+    public boolean isPassed(String inputScanner) {
         if (inputScanner.equals("p")) {
             return true;
         } else if (inputScanner.equals("n")) {
             return false;
         }
+        else return true;
     }
-
 }
