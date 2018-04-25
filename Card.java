@@ -25,7 +25,7 @@ public class Card {
     }
     private void setValue(){
         if(rank < 10){
-            this.rank = this.value;
+            this.value = this.rank;
         }
         else if(rank >= 10 && rank < 14){
                 this.value = 10;
