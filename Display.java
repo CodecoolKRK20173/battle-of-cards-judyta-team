@@ -28,6 +28,16 @@ public class Display {
     }
 
     public void table() {
-        
+
+        StringBuilder table = new StringBuilder();
+
+        int tableWidth = this.getTableWidth();
+
+        table.append(this.putJudytaName())
+             .append(this.putJudytaCoins())
+             .append(this.putJudytaCards())
+             .append(this.putJudytaScore());
+
+
     }
 }
