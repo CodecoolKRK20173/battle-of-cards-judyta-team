@@ -57,5 +57,4 @@ public class PlayerIterator implements Iterator<Player> {
         this.setIndex(nextIndex);
         return player;
     }
-
 }
