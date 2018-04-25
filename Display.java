@@ -47,8 +47,15 @@ public class Display {
              .append(this.formatted("Score: " + players.get(JUDYTA_INDEX).getScore()))   // Score
              .append(this.formatted("Total bet: " + totalBet) + "\n\n\n");   // Total bet
 
+
+        table.append(this.playersData());
+
         System.out.println(table.toString());
 
+    }
+
+    private String playersData() {
+        
     }
 
     private String formatted(String content) {
