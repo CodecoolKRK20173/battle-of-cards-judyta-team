@@ -41,17 +41,17 @@ public class Display {
 
         StringBuilder table = new StringBuilder();
 
-        table.append(this.putFormatted(players.get(JUDYTA_INDEX).getName()))    // Name
-             .append(this.putFormatted("Coins: " + players.get(JUDYTA_INDEX).getCoolcoin()))    // Coins
-             .append(this.putFormatted(players.get(JUDYTA_INDEX).getHand().toString())) // Cards
-             .append(this.putFormatted("Score: " + players.get(JUDYTA_INDEX).getScore()))   // Score
-             .append(this.putFormatted("Total bet: " + totalBet) + "\n\n\n");   // Total bet
+        table.append(this.formatted(players.get(JUDYTA_INDEX).getName()))    // Name
+             .append(this.formatted("Coins: " + players.get(JUDYTA_INDEX).getCoolcoin()))    // Coins
+             .append(this.formatted(players.get(JUDYTA_INDEX).getHand().toString())) // Cards
+             .append(this.formatted("Score: " + players.get(JUDYTA_INDEX).getScore()))   // Score
+             .append(this.formatted("Total bet: " + totalBet) + "\n\n\n");   // Total bet
 
         System.out.println(table.toString());
 
     }
 
-    private String putFormatted(String content) {
+    private String formatted(String content) {
         
         Integer tempWidth = tableWidth / 2;
         return String.format("%1$-" + tempWidth.toString()
