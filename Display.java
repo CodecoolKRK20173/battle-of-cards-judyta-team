@@ -51,6 +51,17 @@ public class Display {
 
     }
 
+    private String putFormatted(String content) {
+        
+        Integer tempWidth = tableWidth / 2;
+        return String.format("%1$-" + tempWidth.toString()
+                            + "s %2$-" + tempWidth.toString()
+                            + "s"
+                            , " "
+                            , content);
+
+    }
+
     private String putJudytaName() {
 
         Integer tempWidth = tableWidth / 2;
