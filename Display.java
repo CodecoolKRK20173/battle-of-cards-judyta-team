@@ -4,6 +4,7 @@ import java.util.HashMap;
 public class Display {
 
     private final int MAX_DEFAULT_WIDTH = 10;
+    private final int MAX_PLAYER_WIDTH = 18;
     
     private int judytaIndex;
     private int tableWidth;
@@ -62,10 +63,41 @@ public class Display {
         StringBuilder playersData = new StringBuilder();
         ArrayList<Players> humanPlayers = getHumanPlayers();
 
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> coins = new ArrayList<>();
+        ArrayList<Pile> cards = new ArrayList<>();
+        ArrayList<String> scores = new ArrayList<>();
+
         PlayerIterator iterator = new PlayerIterator(humanPlayers);
 
         while (iterator.hasNext()) {
             Player player = iterator.next();
+            names.add(player.getName());
+            coins.add((String) player.getCoolcoin());
+            cards.add(player.getHand());
+            scores.add((String) player.getScore());
+        }
+
+        for (String n : names) {
+            playersData.append(formatted(n, MAX_PLAYER_WIDTH));
+        }
+
+        playersData.append("\n");
+
+        for (String c : coins) {
+            playersData.append(formatted("Coins: " + c, MAX_PLAYER_WIDTH));
+        }
+
+        playersData.append("\n");
+
+        for (String c : cards) {
+            playersData.append(formatted(c, MAX_PLAYER_WIDTH));
+        }
+
+        playersData.append("\n");
+
+        for (String s : scores) {
+            playersData.append(formatted("Score: " + s, MAX_PLAYER_WIDTH));
         }
 
         return playersData.toString();
