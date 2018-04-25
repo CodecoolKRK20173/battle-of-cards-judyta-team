@@ -55,7 +55,10 @@ public class Display {
     }
 
     private String playersData() {
-        
+
+        StringBuilder playersData = new StringBuilder();
+
+        return playersData.toString();
     }
 
     private String formatted(String content) {
