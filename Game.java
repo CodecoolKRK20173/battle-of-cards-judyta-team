@@ -21,12 +21,15 @@ public class Game {
     public void launch() {
 
         int moneyChecker = 1;
+        
+        System.out.println("\033[H\033[2J");
         while (moneyChecker != 0) {
             newRound();
 
             for (Player player : players) {
 
                 gameLogic(player);
+                System.out.println("\033[H\033[2J");
                 display.table(cashPool);
 
             }
@@ -44,18 +47,19 @@ public class Game {
     private void placingBets(){
         Iterator<Player> playerIterator = players.iterator();
         playerIterator.forEachRemaining(player -> {
+
             display.table(cashPool);
             if(player.equals(players.get(players.size()-1))){
                 cashPool = cashPool*2;
-                System.out.println("Judyta doubles Cash Pool: " + cashPool);
+                System.out.println("Judyta doubles Cash Pool");
             }
             else{
                 int cash = betCondition(player);
                 player.betCoins(cash);
                 cashPool += cash;
-                //player.setCoolcoin(player.getCoolcoin()-cash);
-                System.out.println("Cash Pool: " + cashPool);
             }
+
+            System.out.println("\033[H\033[2J");
         });            
     }
 
@@ -86,11 +90,16 @@ public class Game {
         deck.clear();
         for (Player player : players) {
             player.getHand().clear();
+            player.setScoreEqualToCardsValue();
+            player.setBust(false);
+            player.setWinner(false);
+            player.setPass(false);
         }
         createDeck();
         shuffleDeck();
         dealCards();
         placingBets();
+        display.table(cashPool);
 
     }
 
@@ -164,7 +173,10 @@ public class Game {
         System.out.println(winnerList.get(0).getName());
         for (Player player : winnerList){
                 player.setCoolcoin(player.getCoolcoin()+cashPool/winnerList.size());
-                System.out.println("Winner is " + player.getName());      
+                players.get(players.size() - 1).getHand().setAllCardsFaceUp();
+                System.out.println("\nWinner is " + player.getName());
+                Input.getString("\nPress any key to continue . . .");
+                System.out.println("\033[H\033[2J");
         }
     }
 
@@ -193,7 +205,7 @@ public class Game {
 
     private void gameLogic(Player player){
 
-        System.out.println(player.getName() + "'s turn!");
+        System.out.println("\n" + player.getName() + "'s turn!");
         if(player.getName()!="Judyta"){
             handleHumanTurn(player);
         } else {
@@ -237,6 +249,7 @@ public class Game {
                 case 1:
                     player.takeCard(deck);
                     player.setScore(player.getHand().givePiletotalScore());
+                    System.out.println("\033[H\033[2J");
                     display.table(cashPool);
                     System.out.println(player.getScore());
                     if(player.getScore()>21){
@@ -271,7 +284,7 @@ public class Game {
     private int betCondition(Player player){
 
         while(true){
-            int cash = getInput("Give bet! ");
+            int cash = getInput("\nGive bet! ");
             if(cash > player.getCoolcoin()){
                 System.out.println("Not enough money");
             }

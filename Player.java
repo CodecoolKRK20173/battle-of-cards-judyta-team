@@ -54,6 +54,10 @@ public abstract class Player {
         this.score = score;
     } 
 
+    public void setScoreEqualToCardsValue() {
+        this.score = hand.givePiletotalScore();
+    }
+
     public void setBust(boolean bust) {
         this.bust = bust;
     }

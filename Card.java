@@ -43,6 +43,9 @@ public class Card {
             this.value = 11;
         }
     }
+    public void setFaceDown(boolean faceDown) {
+        this.isFaceDown = faceDown;
+    }
     public int getValue(){
         return this.value;
     }

@@ -48,9 +48,17 @@ public class Pile {
 
     public int givePiletotalScore(){
         int pileScore = 0;
-        for(Card card : this.getAllCards()){
+        for(Card card : cards){
             pileScore += card.getValue();
         }
         return pileScore;
+    }
+
+    public void setAllCardsFaceUp() {
+        for (Card card : cards) {
+            if (card.isFaceDown()) {
+                card.setFaceDown(false);
+            }
+        }
     }
 }
