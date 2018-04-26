@@ -14,6 +14,7 @@ public class Game {
         display = new Display(players);
         cashPool = 0;
         deck = createDeck();
+        clearTable();
         shuffleDeck();
         dealCards();
         display.table(cashPool);
@@ -160,32 +161,43 @@ public class Game {
     }
 
     public void clearPlayerPile(Player player){
-        Card topFirstCard = player.getHand().getTopCard();
-        deck.addCard(topFirstCard);
-        player.getHand().removeCard(topFirstCard);
-        Card topSecondCard = player.getHand().getTopCard();
-        deck.addCard(topSecondCard);
-        player.getHand().removeCard(topSecondCard);
-        // System.out.println(deck.getAllCards().size());
+        if(player.getHand().getAllCards().size()>0){
+            Card topFirstCard = player.getHand().getTopCard();
+            deck.addCard(topFirstCard);
+            player.getHand().removeCard(topFirstCard);
+            Card topSecondCard = player.getHand().getTopCard();
+            deck.addCard(topSecondCard);
+            player.getHand().removeCard(topSecondCard);
+        }
     }
 
     private void gameLogic(){
         Iterator<Player> playerIterator = players.iterator();
         playerIterator.forEachRemaining(player -> {
-            while(player.getBust()==false && player.getPass()==false){
-                int choice = getInput("1. Hit me!\n2. Pass!");
-                switch (choice) {
-                    case 1:
-                        player.takeCard(deck);
-                        player.setScore(player.getHand().givePiletotalScore());
-                        display.table(cashPool);
-                        if(player.getScore()>21){
-                            player.setBust(true);
-                        }
-                    case 2:
-                        player.setPass(true);
-                }
-                
+            System.out.println(player.getName() + "'s turn!");
+            if(player.getName()!="Judyta"){
+                while(player.getBust()==false && player.getPass()==false){
+                    int choice = getInput("1. Hit me!\n2. Pass!");
+                    switch (choice) {
+                        case 1:
+                            player.takeCard(deck);
+                            player.setScore(player.getHand().givePiletotalScore());
+                            display.table(cashPool);
+                            System.out.println(player.getScore());
+                            if(player.getScore()>21){
+                                player.setBust(true);
+                                System.out.println(player.getName() + " busted!");
+                            }
+                            break;
+                        case 2:
+                            player.setPass(true);
+                            System.out.println(player.getName() + "passed!");
+                            break;
+                    }
+                }   
+            }
+            else{
+
             }
         });
     }
