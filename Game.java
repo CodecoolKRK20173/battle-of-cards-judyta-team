@@ -11,25 +11,38 @@ public class Game {
 
     public Game(ArrayList<Player> players) {
         this.players = new ArrayList<>(players);
-        display = new Display(players);
         cashPool = 0;
         deck = createDeck();
-        clearTable();
-        shuffleDeck();
-        dealCards();
-        display.table(cashPool);
-        placingBets();
-        gameLogic();
+        display = new Display(players);
+
     }
 
     public void launch() {
-        Display display = new Display(players);
-        display.table(cashPool);
+
+        int moneyChecker = 1;
+        while (moneyChecker != 0) {
+            newRound();
+
+            for (Player player : players) {
+
+               
+                gameLogic(player);
+                display.table(cashPool);
+
+            }
+
+            for(Player player : players){
+                moneyChecker = moneyChecker*player.getCoolcoin();
+            }
+
+            
+        }
     }
 
     private void placingBets(){
         Iterator<Player> playerIterator = players.iterator();
         playerIterator.forEachRemaining(player -> {
+            display.table(cashPool);
             if(player.equals(players.get(players.size()-1))){
                 cashPool = cashPool*2;
                 System.out.println("Judyta doubles Cash Pool: " + cashPool);
@@ -40,8 +53,8 @@ public class Game {
                 cashPool += cash;
                 //player.setCoolcoin(player.getCoolcoin()-cash);
                 System.out.println("Cash Pool: " + cashPool);
-            }            
-        });
+            }
+        });            
     }
 
     private int getInput(String text) {
@@ -68,12 +81,13 @@ public class Game {
     }
 
     public void newRound(){
+        
         this.cashPool = 0;
         clearTable();
         shuffleDeck();
         dealCards();
         placingBets();
-        gameLogic();
+
     }
 
     private void dealCards(){
@@ -171,34 +185,32 @@ public class Game {
         }
     }
 
-    private void gameLogic(){
-        Iterator<Player> playerIterator = players.iterator();
-        playerIterator.forEachRemaining(player -> {
-            System.out.println(player.getName() + "'s turn!");
-            if(player.getName()!="Judyta"){
-                while(player.getBust()==false && player.getPass()==false){
-                    int choice = getInput("1. Hit me!\n2. Pass!");
-                    switch (choice) {
-                        case 1:
-                            player.takeCard(deck);
-                            player.setScore(player.getHand().givePiletotalScore());
-                            display.table(cashPool);
-                            System.out.println(player.getScore());
-                            if(player.getScore()>21){
-                                player.setBust(true);
-                                System.out.println(player.getName() + " busted!");
-                            }
-                            break;
-                        case 2:
-                            player.setPass(true);
-                            System.out.println(player.getName() + "passed!");
-                            break;
-                    }
-                }   
-            }
-            else{
+    private void gameLogic(Player player){
 
-            }
-        });
+        System.out.println(player.getName() + "'s turn!");
+        if(player.getName()!="Judyta"){
+            while(player.getBust()==false && player.getPass()==false){
+                int choice = getInput("1. Hit me!\n2. Pass!");
+                switch (choice) {
+                    case 1:
+                        player.takeCard(deck);
+                        player.setScore(player.getHand().givePiletotalScore());
+                        display.table(cashPool);
+                        System.out.println(player.getScore());
+                        if(player.getScore()>21){
+                            player.setBust(true);
+                            System.out.println(player.getName() + " busted!");
+                        }
+                        break;
+                    case 2:
+                        player.setPass(true);
+                        System.out.println(player.getName() + "passed!");
+                        break;
+                }
+            }   
+        }
+        else{
+
+        }
     }
 }

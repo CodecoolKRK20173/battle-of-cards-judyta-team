@@ -39,6 +39,7 @@ public class Main {
                 players.add(judyta);
                 if (players.size()>1) {
                     Game game = new Game(players);
+                    game.launch();
                 } else {
                     System.out.println("There is no player. Please enter: Add new Player");
                 }
