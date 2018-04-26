@@ -63,7 +63,7 @@ public abstract class Player {
 
     public void takeCard(Pile deck) {
         Card cardToHit = deck.getTopCard();
-        cardToHit.changePileToDest(player.getHand());
+        cardToHit.changePileToDest(this.getHand());
     }
 
     public abstract void pass();
