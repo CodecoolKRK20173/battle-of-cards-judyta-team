@@ -5,6 +5,7 @@ public abstract class Player {
     private int score;
     private boolean bust = false;
     private boolean winner = false;
+    private boolean pass = false;
 
     
     public Player(String name, int cash) {
@@ -37,6 +38,10 @@ public abstract class Player {
         return this.winner;
     }
 
+    public boolean getPass() {
+        return this.pass;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -56,6 +61,10 @@ public abstract class Player {
     public void setWinner(boolean winner) {
         this.winner = winner;
     } 
+
+    public void setPass(boolean pass) {
+        this.pass = pass;
+    }
 
     public void betCoins(int cash) {
         setCoolcoin(this.coolcoin-cash);
