@@ -33,13 +33,14 @@ public class Display {
              .append(this.formattedBot("Coins: " + judyta.getCoolcoin(), (tableWidth / 2)) + "\n\n")   // Coins
              .append(String.format("%1$-" + (tableWidth / 2) + "s", " ")).append(" ") //  Tactical space
              .append(this.formattedCards((tableWidth / 2), judyta) + "\n\n")    // Cards
-             .append(this.formattedBot("Score: " + judyta.getScore(), (tableWidth / 2)) + "\n\n\n\n\n\n")   // Score
-             .append(this.formattedBot("Total bet: " + totalBet, (tableWidth / 2)) + "\n\n\n\n\n\n");   // Total bet
+             .append(this.formattedBot("Score: " + judyta.getScore(), (tableWidth / 2)) + "\n\n\n\n")   // Score
+             .append(this.formattedBot("Total bet: " + totalBet, (tableWidth / 2)) + "\n\n\n\n");   // Total bet
 
 
         table.append(this.playersData());
 
         System.out.println(table.toString());
+        System.out.println("\n\nRoman: Te ikonki kart sa na sztywno ustawione, ich rzeczywista wartosc jest prawidlowa <--------------");
 
     }
 

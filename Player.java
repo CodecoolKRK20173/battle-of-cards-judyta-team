@@ -2,17 +2,15 @@ public abstract class Player {
     private String name;
     private int coolcoin;
     private Pile hand;
-    private Game game;
     private int score;
     private boolean bust = false;
     private boolean winner = false;
 
     
     public Player(String name, int cash) {
-        setName(name);
-        setCoolcoin(cash);
+        this.name = name;
+        this.coolcoin = cash;
         this.hand = new Pile();
-        game = null;
     }
 
     public String getName() {
@@ -45,10 +43,6 @@ public abstract class Player {
 
     public void setCoolcoin(int cash) {
         this.coolcoin = cash;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
     } 
 
     public void setScore(int score) {
@@ -64,22 +58,18 @@ public abstract class Player {
     } 
 
     public void betCoins(int cash) {
-        //System.out.println("Bet game!")
-        //Scanner input = new Scanner(System.in);
-        // int cash = input.nextInt();
-        int coolcoin = getCoolcoin();
-        setCoolcoin(coolcoin-cash);
-        game.setCashPool(game.getCashPool() + cash);
+        setCoolcoin(this.coolcoin-cash);
     }
 
-    public void takeCard() {
-        Pile deck = game.getDeck();
+    public void takeCard(Pile deck) {
+        //Pile deck = game.getDeck();
         Card cardToHit = deck.getTopCard();
         cardToHit.changePileToDest(deck);
+        //cardToHit.changePileToDest(player.getHand());
     }
 
     public abstract void pass();
 
-    public abstract boolean isPassed(String inputScanner);
+    public abstract boolean isPassed();
 
 }
