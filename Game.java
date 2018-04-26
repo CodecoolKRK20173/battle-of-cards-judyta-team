@@ -11,25 +11,38 @@ public class Game {
 
     public Game(ArrayList<Player> players) {
         this.players = new ArrayList<>(players);
-        display = new Display(players);
         cashPool = 0;
         deck = createDeck();
-        clearTable();
-        shuffleDeck();
-        dealCards();
-        display.table(cashPool);
-        placingBets();
-        gameLogic();
+        display = new Display(players);
+
     }
 
     public void launch() {
-        Display display = new Display(players);
-        display.table(cashPool);
+
+        int moneyChecker = 1;
+        while (moneyChecker != 0) {
+            newRound();
+
+            for (Player player : players) {
+
+               
+                gameLogic(player);
+                display.table(cashPool);
+
+            }
+
+            for(Player player : players){
+                moneyChecker = moneyChecker*player.getCoolcoin();
+            }
+
+            
+        }
     }
 
     private void placingBets(){
         Iterator<Player> playerIterator = players.iterator();
         playerIterator.forEachRemaining(player -> {
+            display.table(cashPool);
             if(player.equals(players.get(players.size()-1))){
                 cashPool = cashPool*2;
                 System.out.println("Judyta doubles Cash Pool: " + cashPool);
@@ -40,8 +53,8 @@ public class Game {
                 cashPool += cash;
                 //player.setCoolcoin(player.getCoolcoin()-cash);
                 System.out.println("Cash Pool: " + cashPool);
-            }            
-        });
+            }
+        });            
     }
 
     private int getInput(String text) {
@@ -68,12 +81,13 @@ public class Game {
     }
 
     public void newRound(){
+        
         this.cashPool = 0;
         clearTable();
         shuffleDeck();
         dealCards();
         placingBets();
-        gameLogic();
+
     }
 
     private void dealCards(){
@@ -171,9 +185,8 @@ public class Game {
         }
     }
 
-    private void gameLogic(){
-        Iterator<Player> playerIterator = players.iterator();
-        playerIterator.forEachRemaining(player -> {
+    private void gameLogic(Player player){
+
             System.out.println(player.getName() + "'s turn!");
             if(player.getName()!="Judyta"){
                 while(player.getBust()==false && player.getPass()==false){
@@ -211,7 +224,8 @@ public class Game {
                         System.out.println(player.getName() + " passed!");
                         } else {
                             Player playerWithHighestScore = playerWithHighestScore();
-                            if (player.getScore() > playerWithHighestScore.getScore()) {
+                            if (player.getScore() 
+                            > playerWithHighestScore.getScore()) {
                                 player.setPass(true);
                                 System.out.println(player.getName() + " passed 2!");
                             } else {
@@ -227,8 +241,7 @@ public class Game {
                     } 
                 }
 
-            }
-        });
+        }
     }
 
     private Player playerWithHighestScore() {
@@ -239,7 +252,7 @@ public class Game {
         int highestScore = 0;
         do {
             Player player = playerIterator.next();
-            if (player.getScore() > highestScore) {
+            if (player.getScore() >= highestScore) {
                 highestScore = player.getScore();
                 playerWithHighestScore = player;
                 }
