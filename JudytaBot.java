@@ -6,12 +6,11 @@ public class JudytaBot extends Player {
 
     @Override
     public void pass() {
-        //game over;
     }
 
     @Override
-    public boolean isPassed(String inputScaner) {
-        return false;
+    public boolean isPassed() {
+        return true;
     }
 
 }

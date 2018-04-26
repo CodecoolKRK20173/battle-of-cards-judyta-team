@@ -1,6 +1,8 @@
 import java.security.Principal;
 import java.util.*;
 
+//import Card.Suits;
+
 public class Game {
     private ArrayList<Player> players;
     private Pile deck;
@@ -14,11 +16,15 @@ public class Game {
         deck = createDeck();
         shuffleDeck();
         dealCards();
-        display.table();
+        display.table(cashPool);
         placingBets();
         gameLogic();
     }
 
+    public void launch() {
+        Display display = new Display(players);
+        display.table(cashPool);
+    }
 
     private void placingBets(){
         Iterator<Player> playerIterator = players.iterator();
@@ -51,9 +57,9 @@ public class Game {
 
     private Pile createDeck(){
         Pile deck = new Pile();
-        for (int i=1; i<5; i++){
+        for (Card.Suits suit : Card.Suits.values()) {
             for (int j=2; j<15; j++){
-                deck.addCard(new Card(i, j, deck));
+                deck.addCard(new Card(suit, j, deck));
                 // System.out.println("rank = " + i + "suit = " + j);
             }
         }
@@ -144,11 +150,12 @@ public class Game {
     public void setCashPool(int cash) {
         cashPool = cash;
     }
-
     private void clearTable(){
-        for(Player player : players){
+        PlayerIterator playerIterator = new PlayerIterator(players);
+        while(playerIterator.hasNext()){
+            Player player = playerIterator.next();
             clearPlayerPile(player);
-        }    
+        }     
     }
 
     public void clearPlayerPile(Player player){
@@ -170,7 +177,7 @@ public class Game {
                     case 1:
                         player.takeCard(deck);
                         player.setScore(player.getHand().givePiletotalScore());
-                        display.table();
+                        display.table(cashPool);
                         if(player.getScore()>21){
                             player.setBust(true);
                         }
