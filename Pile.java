@@ -41,4 +41,12 @@ public class Pile {
     public int getSize(){
         return cards.size();
     }
+
+    public int givePiletotalScore(){
+        int pileScore = 0;
+        for(Card card : this.getAllCards()){
+            pileScore += card.getValue();
+        }
+        return pileScore;
+    }
 }

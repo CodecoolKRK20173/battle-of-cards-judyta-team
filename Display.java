@@ -20,6 +20,7 @@ public class Display {
             playerItems.append("Name: " + p.getName())
                        .append(" Coins: " + p.getCoolcoin())
                        .append(" Cards: " + p.getHand())
+                       .append(" Score: " + p.getScore())
                        .append("\n");
 
         }

@@ -14,5 +14,8 @@ public class Main {
         players.add(judyta);
 
         Game game = new Game(players);
-    }
+        while(true){
+            game.newRound();
+        }
+    }   
 }
