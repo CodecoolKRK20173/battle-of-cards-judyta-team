@@ -1,6 +1,8 @@
 import java.security.Principal;
 import java.util.*;
 
+//import Card.Suits;
+
 public class Game {
     private ArrayList<Player> players;
     private Pile deck;
@@ -19,7 +21,7 @@ public class Game {
 
     public void launch() {
         Display display = new Display(players);
-        display.table();
+        display.table(cashPool);
     }
 
     private void placingBets(){
@@ -30,9 +32,9 @@ public class Game {
             }
             else{
                 int cash = getInput("Give bet! ");
-                // player.betCoins(cash);
+                player.betCoins(cash);
                 cashPool += cash;
-                player.setCoolcoin(player.getCoolcoin()-cash);
+                //player.setCoolcoin(player.getCoolcoin()-cash);
             }
             System.out.println("Cash Pool: " + cashPool);
         });
@@ -52,9 +54,9 @@ public class Game {
 
     private Pile createDeck(){
         Pile deck = new Pile();
-        for (int i=1; i<5; i++){
+        for (Card.Suits suit : Card.Suits.values()) {
             for (int j=2; j<15; j++){
-                deck.addCard(new Card(i, j, deck));
+                deck.addCard(new Card(suit, j, deck));
                 // System.out.println("rank = " + i + "suit = " + j);
             }
         }
