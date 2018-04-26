@@ -231,7 +231,7 @@ public class Game {
                 Player playerWithHighestScore = playerWithHighestScore();
                 if (player.getScore() > playerWithHighestScore.getScore()) {
                     player.setPass(true);
-                    System.out.println(player.getName() + " passed 2!");
+                    System.out.println(player.getName() + " passed!");
                 } else {
                     player.takeCard(deck);
                     player.setScore(player.getHand().givePiletotalScore());
