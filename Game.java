@@ -185,60 +185,60 @@ public class Game {
 
     private void gameLogic(Player player){
 
-            System.out.println(player.getName() + "'s turn!");
-            if(player.getName()!="Judyta"){
-                while(player.getBust()==false && player.getPass()==false){
-                    int choice = getInput("1. Hit me!\n2. Pass!");
-                    switch (choice) {
-                        case 1:
-                            player.takeCard(deck);
-                            player.setScore(player.getHand().givePiletotalScore());
-                            display.table(cashPool);
-                            System.out.println(player.getScore());
-                            if(player.getScore()>21){
-                                player.setBust(true);
-                                player.setScore(0);
-                                System.out.println(player.getName() + " busted! - Your score was too high");
-                            }
-                            break;
-                        case 2:
-                            player.setPass(true);
-                            System.out.println(player.getName() + " passed!");
-                            break;
-                    }
-                }   
-            } else {
-                while(player.getBust()==false && player.getPass()==false) {
-
-                    player.getHand().getTopCard().flip();
-                    player.setScore(player.getHand().givePiletotalScore());
-                    System.out.println(player.getScore());
-                    int botScore = player.getScore();
-                    if (botScore > 21) {
-                        player.setBust(true);
-                        System.out.println(player.getName() + " busted!");
-                        } else if (botScore >= 20) {
+        System.out.println(player.getName() + "'s turn!");
+        if(player.getName()!="Judyta"){
+            while(player.getBust()==false && player.getPass()==false){
+                int choice = getInput("1. Hit me!\n2. Pass!");
+                switch (choice) {
+                    case 1:
+                        player.takeCard(deck);
+                        player.setScore(player.getHand().givePiletotalScore());
+                        display.table(cashPool);
+                        System.out.println(player.getScore());
+                        if(player.getScore()>21){
+                            player.setBust(true);
+                            player.setScore(0);
+                            System.out.println(player.getName() + " busted! - Your score was too high");
+                        }
+                        break;
+                    case 2:
                         player.setPass(true);
                         System.out.println(player.getName() + " passed!");
-                        } else {
-                            Player playerWithHighestScore = playerWithHighestScore();
-                            if (player.getScore() 
-                            > playerWithHighestScore.getScore()) {
-                                player.setPass(true);
-                                System.out.println(player.getName() + " passed 2!");
-                            } else {
+                        break;
+                }
+            }   
+        } else {
+            handleJudytaBot(player);
+            }
 
-                                //System.out.println(player.getScore());
-                                player.takeCard(deck);
-                                player.setScore(player.getHand().givePiletotalScore());
-                                
-                                //System.out.println(player.getScore());
-                                System.out.println(player.getName() + " Hit a card");
-                            }
+        
+    }
 
-                    } 
+    private void handleJudytaBot(Player player) {
+        while(player.getBust()==false && player.getPass()==false) {
+            player.getHand().getTopCard().flip();
+            player.setScore(player.getHand().givePiletotalScore());
+            System.out.println(player.getScore());
+            int botScore = player.getScore();
+
+            if (botScore > 21) {
+                player.setBust(true);
+                System.out.println(player.getName() + " busted!");
+            } else if (botScore >= 20) {
+                player.setPass(true);
+                System.out.println(player.getName() + " passed!");
+            } else {
+                Player playerWithHighestScore = playerWithHighestScore();
+                if (player.getScore() > playerWithHighestScore.getScore()) {
+                    player.setPass(true);
+                    System.out.println(player.getName() + " passed 2!");
+                } else {
+                    player.takeCard(deck);
+                    player.setScore(player.getHand().givePiletotalScore());
+                    System.out.println(player.getName() + " Hit a card");
                 }
 
+            } 
         }
     }
 
