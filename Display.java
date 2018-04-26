@@ -40,7 +40,6 @@ public class Display {
         table.append(this.playersData());
 
         System.out.println(table.toString());
-        System.out.println("\n\nRoman: Te ikonki kart sa na sztywno ustawione, ich rzeczywista wartosc jest prawidlowa <--------------");
 
     }
 
@@ -118,7 +117,7 @@ public class Display {
         return cardsFormat.toString();
     }
 
-    private ArrayList<Player> getHumanPlayers() {
+    public ArrayList<Player> getHumanPlayers() {
 
         Player judyta = players.get(judytaIndex);
         ArrayList<Player> humanPlayers = new ArrayList<>(players);
