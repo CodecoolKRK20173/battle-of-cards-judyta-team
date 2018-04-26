@@ -257,9 +257,6 @@ public class Game {
         } while (playerIterator.hasNext());
         return playerWithHighestScore;
     }
-<<<<<<< HEAD
-}
-=======
     private int betCondition(Player player){
 
         while(true){
@@ -274,4 +271,3 @@ public class Game {
         }   
     }
 }
->>>>>>> development
