@@ -118,7 +118,7 @@ public class Display {
         return cardsFormat.toString();
     }
 
-    private ArrayList<Player> getHumanPlayers() {
+    public ArrayList<Player> getHumanPlayers() {
 
         Player judyta = players.get(judytaIndex);
         ArrayList<Player> humanPlayers = new ArrayList<>(players);

@@ -186,19 +186,64 @@ public class Game {
                             System.out.println(player.getScore());
                             if(player.getScore()>21){
                                 player.setBust(true);
-                                System.out.println(player.getName() + " busted!");
+                                player.setScore(0);
+                                System.out.println(player.getName() + " busted! - Your score was too high");
                             }
                             break;
                         case 2:
                             player.setPass(true);
-                            System.out.println(player.getName() + "passed!");
+                            System.out.println(player.getName() + " passed!");
                             break;
                     }
                 }   
-            }
-            else{
+            } else {
+                while(player.getBust()==false && player.getPass()==false) {
+
+                    player.getHand().getTopCard().flip();
+                    player.setScore(player.getHand().givePiletotalScore());
+                    System.out.println(player.getScore());
+                    int botScore = player.getScore();
+                    if (botScore > 21) {
+                        player.setBust(true);
+                        System.out.println(player.getName() + " busted!");
+                        } else if (botScore >= 20) {
+                        player.setPass(true);
+                        System.out.println(player.getName() + " passed!");
+                        } else {
+                            Player playerWithHighestScore = playerWithHighestScore();
+                            if (player.getScore() > playerWithHighestScore.getScore()) {
+                                player.setPass(true);
+                                System.out.println(player.getName() + " passed 2!");
+                            } else {
+
+                                //System.out.println(player.getScore());
+                                player.takeCard(deck);
+                                player.setScore(player.getHand().givePiletotalScore());
+                                
+                                //System.out.println(player.getScore());
+                                System.out.println(player.getName() + " Hit a card");
+                            }
+
+                    } 
+                }
 
             }
         });
+    }
+
+    private Player playerWithHighestScore() {
+
+        ArrayList<Player> humanPlayers = display.getHumanPlayers();
+        PlayerIterator playerIterator = new PlayerIterator(humanPlayers);
+        Player playerWithHighestScore = null;
+        int highestScore = 0;
+        do {
+            Player player = playerIterator.next();
+            if (player.getScore() > highestScore) {
+                highestScore = player.getScore();
+                playerWithHighestScore = player;
+                }
+        } while (playerIterator.hasNext());
+        return playerWithHighestScore;
     }
 }
