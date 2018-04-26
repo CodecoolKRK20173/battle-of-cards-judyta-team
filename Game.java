@@ -30,6 +30,8 @@ public class Game {
                 display.table(cashPool);
 
             }
+            checkHighestScore();
+            giveCoolcoinsToWinner();
 
             for(Player player : players){
                 moneyChecker = moneyChecker*player.getCoolcoin();
@@ -134,7 +136,7 @@ public class Game {
             }
         }
         Collections.sort(scoreTable);
-        int highestScore = scoreTable.get(0);
+        int highestScore = scoreTable.get(scoreTable.size()-1);
         for (Player player : players){
             if (player.getScore()==highestScore){
                 player.setWinner(true);
@@ -157,10 +159,10 @@ public class Game {
                 winnerList.add(player);
             }
         }
-        for (Player player : players){
-            if(player.getWinner()==true){
+        System.out.println(winnerList.get(0).getName());
+        for (Player player : winnerList){
                 player.setCoolcoin(player.getCoolcoin()+cashPool/winnerList.size());
-            }
+                System.out.println("Winner is " + player.getName());      
         }
     }
 
