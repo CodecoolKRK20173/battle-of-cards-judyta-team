@@ -21,7 +21,7 @@ public class Game {
 
     public void launch() {
         Display display = new Display(players);
-        display.table();
+        display.table(cashPool);
     }
 
     private void placingBets(){

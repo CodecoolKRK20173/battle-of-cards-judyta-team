@@ -43,6 +43,9 @@ public class Card {
         //String cartToPrint = "";
         return "" + this.rank + this.getIcon() + " ";
     }
+    public int getCodePointValue() {
+        return 127137;
+    }
 
     public void changePileToDest(Pile destPile) {
         destPile.addCard(this);
