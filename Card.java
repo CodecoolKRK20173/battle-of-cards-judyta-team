@@ -100,7 +100,6 @@ public class Card {
     public void changePileToDest(Pile destPile) {
         destPile.addCard(this);
         pile.removeCard(this);
-        pile = destPile;
     }
 
     public enum Suits {

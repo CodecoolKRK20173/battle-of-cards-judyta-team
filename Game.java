@@ -12,7 +12,8 @@ public class Game {
     public Game(ArrayList<Player> players) {
         this.players = new ArrayList<>(players);
         cashPool = 0;
-        deck = createDeck();
+        deck = new Pile();
+        createDeck();
         display = new Display(players);
 
     }
@@ -25,7 +26,6 @@ public class Game {
 
             for (Player player : players) {
 
-               
                 gameLogic(player);
                 display.table(cashPool);
 
@@ -71,21 +71,23 @@ public class Game {
         return choice;
     }
 
-    private Pile createDeck(){
-        Pile deck = new Pile();
+    private void createDeck(){
         for (Card.Suits suit : Card.Suits.values()) {
             for (int j=2; j<15; j++){
                 deck.addCard(new Card(suit, j, deck));
                 // System.out.println("rank = " + i + "suit = " + j);
             }
         }
-        return deck;
     }
 
     public void newRound(){
         
         this.cashPool = 0;
-        clearTable();
+        deck.clear();
+        for (Player player : players) {
+            player.getHand().clear();
+        }
+        createDeck();
         shuffleDeck();
         dealCards();
         placingBets();
@@ -175,20 +177,18 @@ public class Game {
     }
     private void clearTable(){
         
-        PlayerIterator playerIterator = new PlayerIterator(players);
-        while(playerIterator.hasNext()){
-            Player player = playerIterator.next();
+        for (Player player : players) {
             clearPlayerPile(player);
-        }     
+            player.setScore(0);
+        }
     }
 
     public void clearPlayerPile(Player player){
 
-        for(int i = 0; i < player.getHand().getSize(); i++){
-            Card topFirstCard = player.getHand().getTopCard();
-            deck.addCard(topFirstCard);
-            player.getHand().removeCard(topFirstCard);
-        }   
+        List<Card> cards = player.getHand().getAllCards();
+        for (Card card : cards) {
+            card.changePileToDest(deck);
+        }
     }
 
     private void gameLogic(Player player){

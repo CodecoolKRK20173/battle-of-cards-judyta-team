@@ -24,6 +24,10 @@ public class Pile {
         return cards;
     }
 
+    public void clear() {
+        cards.clear();
+    }
+
     public String toString() {
         
         StringBuilder cardsInPile = new StringBuilder();
