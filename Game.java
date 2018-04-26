@@ -143,13 +143,14 @@ public class Game {
         cashPool = cash;
     }
     private void clearTable(){
+        
         PlayerIterator playerIterator = new PlayerIterator(players);
         while(playerIterator.hasNext()){
             Player player = playerIterator.next();
             clearPlayerPile(player);
         }     
     }
-    public void clearPlayerPile(Player player){
+    private void clearPlayerPile(Player player){
 
         Card topFirstCard = player.getHand().getTopCard();
         deck.addCard(topFirstCard);
