@@ -40,7 +40,6 @@ public class Display {
         table.append(this.playersData());
 
         System.out.println(table.toString());
-        System.out.println("\n\nRoman: Te ikonki kart sa na sztywno ustawione, ich rzeczywista wartosc jest prawidlowa <--------------");
 
     }
 

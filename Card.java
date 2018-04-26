@@ -1,6 +1,13 @@
 import java.util.*;
 
 public class Card {
+
+    private static final int CODE_POINT_BACK = 127136;
+    private static final int STARTING_CODE_POINT_DIAMOND = 127168;
+    private static final int STARTING_CODE_POINT_HEART = 127152;
+    private static final int STARTING_CODE_POINT_PEAK = 127136;
+    private static final int STARTING_CODE_POINT_CLUB = 127184;
+
     private Suits suit;
     private int rank;
     private boolean isFaceDown;
@@ -44,7 +51,50 @@ public class Card {
         return "" + this.rank + this.getIcon() + " ";
     }
     public int getCodePointValue() {
-        return 127137;
+
+        int codePointValue;
+
+        if (this.isFaceDown) {
+            return CODE_POINT_BACK;
+        }
+
+        else {
+
+            if (this.suit.equals(Suits.PEAK)) {
+                codePointValue = Suits.PEAK.startingCodePointValue;
+                codePointValue = addEqualValue(codePointValue);
+            }
+
+            else if (this.suit.equals(Suits.HEART)) {
+                codePointValue = Suits.HEART.startingCodePointValue;
+                codePointValue = addEqualValue(codePointValue);
+            }
+
+            else if (this.suit.equals(Suits.DIAMOND)) {
+                codePointValue = Suits.DIAMOND.startingCodePointValue;
+                codePointValue = addEqualValue(codePointValue);
+            }
+
+            else {
+                codePointValue = Suits.CLUB.startingCodePointValue;
+                codePointValue = addEqualValue(codePointValue);
+            }
+
+            return codePointValue;
+
+        }
+    }
+
+    private int addEqualValue(int actualValue) {
+
+        if (this.rank == 14) {
+            actualValue += 1;
+        }
+        else {
+            actualValue += this.rank;
+        }
+
+        return actualValue;
     }
 
     public void changePileToDest(Pile destPile) {
@@ -54,10 +104,17 @@ public class Card {
     }
 
     public enum Suits {
-        DIAMOND,
-        HEART,
-        PEAK,
-        CLUB
+        
+        DIAMOND (STARTING_CODE_POINT_DIAMOND),
+        HEART (STARTING_CODE_POINT_HEART),
+        PEAK (STARTING_CODE_POINT_PEAK),
+        CLUB (STARTING_CODE_POINT_CLUB);
+
+        public final int startingCodePointValue;
+
+        private Suits(int startingCodePointValue) {
+            this.startingCodePointValue = startingCodePointValue;
+        }
     }
 
     public String getIcon() {
