@@ -150,10 +150,16 @@ public class Game {
         this.deck = pile;
     }
 
-    private void giveCoolcoinsTowWinner(){
+    private void giveCoolcoinsToWinner(){
+        ArrayList<Player> winnerList = new ArrayList<>();
         for(Player player : players){
             if(player.getWinner()==true){
-                player.setCoolcoin(player.getCoolcoin()+cashPool);
+                winnerList.add(player);
+            }
+        }
+        for (Player player : players){
+            if(player.getWinner()==true){
+                player.setCoolcoin(player.getCoolcoin()+cashPool/winnerList.size());
             }
         }
     }
@@ -187,31 +193,11 @@ public class Game {
 
         System.out.println(player.getName() + "'s turn!");
         if(player.getName()!="Judyta"){
-            while(player.getBust()==false && player.getPass()==false){
-                int choice = getInput("1. Hit me!\n2. Pass!");
-                switch (choice) {
-                    case 1:
-                        player.takeCard(deck);
-                        player.setScore(player.getHand().givePiletotalScore());
-                        display.table(cashPool);
-                        System.out.println(player.getScore());
-                        if(player.getScore()>21){
-                            player.setBust(true);
-                            player.setScore(0);
-                            System.out.println(player.getName() + " busted! - Your score was too high");
-                        }
-                        break;
-                    case 2:
-                        player.setPass(true);
-                        System.out.println(player.getName() + " passed!");
-                        break;
-                }
-            }   
+            handleHumanTurn(player);
         } else {
             handleJudytaBot(player);
-            }
+        }
 
-        
     }
 
     private void handleJudytaBot(Player player) {
@@ -240,6 +226,29 @@ public class Game {
 
             } 
         }
+    }
+
+    private void handleHumanTurn(Player player){
+        while(player.getBust()==false && player.getPass()==false){
+            int choice = getInput("1. Hit me!\n2. Pass!");
+            switch (choice) {
+                case 1:
+                    player.takeCard(deck);
+                    player.setScore(player.getHand().givePiletotalScore());
+                    display.table(cashPool);
+                    System.out.println(player.getScore());
+                    if(player.getScore()>21){
+                        player.setBust(true);
+                        player.setScore(0);
+                        System.out.println(player.getName() + " busted! - Your score was too high");
+                    }
+                    break;
+                case 2:
+                    player.setPass(true);
+                    System.out.println(player.getName() + " passed!");
+                    break;
+            }
+        }   
     }
 
     private Player playerWithHighestScore() {
