@@ -160,13 +160,12 @@ public class Game {
     }
 
     public void clearPlayerPile(Player player){
-        Card topFirstCard = player.getHand().getTopCard();
-        deck.addCard(topFirstCard);
-        player.getHand().removeCard(topFirstCard);
-        Card topSecondCard = player.getHand().getTopCard();
-        deck.addCard(topSecondCard);
-        player.getHand().removeCard(topSecondCard);
-        // System.out.println(deck.getAllCards().size());
+
+        for(int i = 0; i < player.getHand().getSize(); i++){
+            Card topFirstCard = player.getHand().getTopCard();
+            deck.addCard(topFirstCard);
+            player.getHand().removeCard(topFirstCard);
+        }   
     }
 
     private void gameLogic(){
