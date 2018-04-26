@@ -192,9 +192,10 @@ public class Game {
 
         while(true){
             int cash = getInput("Give bet! ");
-            if(cash > player.getCoolcoin() ||  cash <= 0){
-                System.out.println("Not enough mony");
+            if(cash > player.getCoolcoin() ||  cash < 0){
+                System.out.println("Not enough money");
             }
+            else if(cash == 0);
             else{
                 return cash;
             }
