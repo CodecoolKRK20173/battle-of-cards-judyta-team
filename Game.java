@@ -48,7 +48,7 @@ public class Game {
                 System.out.println("Judyta doubles Cash Pool: " + cashPool);
             }
             else{
-                int cash = getInput("Give bet! ");
+                int cash = betCondition(player);
                 player.betCoins(cash);
                 cashPool += cash;
                 //player.setCoolcoin(player.getCoolcoin()-cash);
@@ -257,4 +257,21 @@ public class Game {
         } while (playerIterator.hasNext());
         return playerWithHighestScore;
     }
+<<<<<<< HEAD
 }
+=======
+    private int betCondition(Player player){
+
+        while(true){
+            int cash = getInput("Give bet! ");
+            if(cash > player.getCoolcoin() ||  cash < 0){
+                System.out.println("Not enough money");
+            }
+            else if(cash == 0);
+            else{
+                return cash;
+            }
+        }   
+    }
+}
+>>>>>>> development
