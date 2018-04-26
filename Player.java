@@ -62,10 +62,8 @@ public abstract class Player {
     }
 
     public void takeCard(Pile deck) {
-        //Pile deck = game.getDeck();
         Card cardToHit = deck.getTopCard();
-        cardToHit.changePileToDest(deck);
-        //cardToHit.changePileToDest(player.getHand());
+        cardToHit.changePileToDest(player.getHand());
     }
 
     public abstract void pass();
