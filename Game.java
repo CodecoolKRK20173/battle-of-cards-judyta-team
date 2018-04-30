@@ -224,6 +224,7 @@ public class Game {
             if (botScore > 21) {
                 player.setBust(true);
                 System.out.println(player.getName() + " busted!");
+                
             } else if (botScore >= 20) {
                 player.setPass(true);
                 System.out.println(player.getName() + " passed!");
