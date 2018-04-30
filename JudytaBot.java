@@ -10,7 +10,10 @@ public class JudytaBot extends Player {
 
     @Override
     public boolean isPassed() {
-        return true;
+        if (this.getScore() >= 20) {
+            return true;
+        } else {
+            return false;
+        } 
     }
-
 }

@@ -133,5 +133,23 @@ public class Card {
         //trefl "\u2663"
         return suitIcon.get(this.suit);
     }
+    
+    public boolean equals (Card card) {
+        if (this.hashCode() == card.hashCode()) {
+            if (this.suit == card.suit) {
+                if (this.rank == card.rank) {
+                    if (this.isFaceDown == card.isFaceDown) {
+                        return true;
+                    } else return false;
+                } else return false;
+            } else return false;
+        } else return false;
+    }
 
+    @Override
+    public int hashCode() {
+        int faceDownValue = this.isFaceDown ? 1 : -1;
+        int hashCodeValue = this.suit.hashCode() * this.rank * faceDownValue;
+        return hashCodeValue;
+    }
 }

@@ -6,7 +6,7 @@ public class Human extends Player {
     
     @Override
     public void pass() {
-        //ustaw player'a na szaro      
+     
     }
 
     @Override
